@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package com.epam.stubs.user;
+
+option java_package="com.epam.stubs.user";
+option java_multiple_files=true;
+
+service UserService{
+  rpc getUserDetails(UserRequest) returns (UserResponse);
+
+  rpc saveUserDetails(UserRequest) returns (UserResponse);
+}
+
+
+
+message UserRequest{
+  string username=1;
+  string fName=2;
+  string lName=3;
+  Gender gender=4;
+}
+message UserResponse
+{
+  int32 userId=1;
+  string fName=2;
+  string lName=3;
+  string username=4;
+  google.protobuf.Timestamp doj=5;
+  Gender gender=6;
+}
+
+enum Gender
+{
+  MALE=0;
+  FEMALE=1;
+  OTHER=3;
+}
+
